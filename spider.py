@@ -7,16 +7,17 @@ import time
 import os
 import urllib.request
 
+proxies = { "https": "https://113.240.226.164"}
 
 
 def get_one_page(url):
-    headers = {'Accept': 'text/html, application/xhtml+xml, image/jxr, */*',
-               'Accept - Encoding': 'gzip, deflate',
-               'Accept-Language': 'zh-Hans-CN, zh-Hans; q=0.5',
-               'Connection': 'Keep-Alive',
-               'Host': 'zhannei.baidu.com',
-               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063'}
-    response = requests.get(url,headers=headers)
+    # headers = {'Accept': 'text/html, application/xhtml+xml, image/jxr, */*',
+    #            'Accept - Encoding': 'gzip, deflate',
+    #            'Accept-Language': 'zh-Hans-CN, zh-Hans; q=0.5',
+    #            'Connection': 'Keep-Alive',
+    #            'Host': 'zhannei.baidu.com',
+    #            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063'}
+    response = requests.get(url,proxies=proxies)
     if response.status_code == 200:
         return(response.text)
 
@@ -42,12 +43,12 @@ def Schedule(a, b, c):
         # urllib.request.urlretrieve(item,'/media/karson/交易室/pictures/%s' % item[-10:], Schedule)
 
 
-url = "http://www.meizitu.com/a/5558.html"
+url = "http://www.meizitu.com"
 html = get_one_page(url)
 print(html)
 
 
-爬去ip，制作Ip池t in
+# 爬去ip，制作Ip池t in
 
 #  需要破封ip
 
